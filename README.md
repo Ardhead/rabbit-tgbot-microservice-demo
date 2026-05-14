@@ -21,8 +21,7 @@ A system consisting of three microservices designed for generating, processing, 
 1. Clone the repository
 2. Create root `.env` from example: `cp .env.example .env` and configure values
 3. Start infrastructure: `docker compose up -d postgres rabbitmq`
-4. Run migrations: `cd consumer-service && npm run migrate:up`
-5. Start all services: `docker compose up --build`
+4. Start all services: `docker compose up --build`
 
 ## API Documentation (Swagger)
 
@@ -35,22 +34,24 @@ npm is used as the package manager for all services.
 
 ### Running Services Locally
 
-Each service can be run independently in development mode:
+- Do steps 1-3 from Setup Instructions.
+- Run migrations: `cd consumer-service && npm ci && npm run migrate:up && cd ../`
+- Each service can be run independently in development mode:
 
 ```bash
 # Producer Service
 cd producer-service
-npm install
+npm ci
 npm run start:dev
 
 # Consumer Service
 cd consumer-service
-npm install
+npm ci
 npm run start:dev
 
 # Notifier Service
 cd notifier-service
-npm install
+npm ci
 npm run start:dev
 ```
 
